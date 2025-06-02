@@ -1,0 +1,46 @@
+package com.neutec.blog.excption;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+@ControllerAdvice
+public class ExceptionAdvice extends ResponseEntityExceptionHandler {
+    public ExceptionAdvice() {
+    }
+
+    @NonNull
+    @ExceptionHandler({Exception.class})
+    protected ResponseEntity<Object> handleException(@NonNull Throwable ex, @NonNull WebRequest request) {
+        return this.handleExceptionInternal((Exception) ex, (Object) null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+    }
+
+    @NonNull
+    @ExceptionHandler({ServiceException.class})
+    protected ResponseEntity<Object> handleCarPlusException(@NonNull ServiceException ex, @NonNull WebRequest request) {
+        ErrorResponse body = new ErrorResponse(500, ex.getMessage(), new java.util.Date());
+        return this.handleExceptionInternal(ex, body, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+    }
+
+
+    @NonNull
+    protected ResponseEntity<Object> handleExceptionInternal(@NonNull Exception ex, @Nullable Object body, @NonNull HttpHeaders headers, @NonNull HttpStatus status, @NonNull WebRequest request) {
+        String errorInfo = ex.getClass().getName() + "：" + ex.getMessage();
+        if (status.is5xxServerError()) {
+            ex.printStackTrace();
+        }
+
+        Object _body = body;
+        if (body == null) {
+            _body = new ErrorResponse(status.value(), errorInfo, new java.util.Date());
+        }
+
+        return super.handleExceptionInternal(ex, _body, headers, status, request);
+    }
+}
