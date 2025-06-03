@@ -52,6 +52,11 @@ public class UserService {
         return jwtService.generateToken(user);
     }
 
+    public User findById(Long userId){
+        return userRepo.findById(userId)
+                .orElseThrow(() -> new UserException("User with ID " + userId + " not found."));
+    }
+
     /**
      * 加密密碼
      */

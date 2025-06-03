@@ -11,7 +11,7 @@
             `email` varchar(128) NOT NULL,
             `password` varchar(256) NOT NULL,
             `name` varchar(128) NOT NULL,
-            `role` enum('USER','ADMIN') DEFAULT NULL,
+            `role` enum('USER','ADMIN') NOT NULL DEFAULT 'USER',
             `lastLoginDate` datetime DEFAULT NULL,
             `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
             `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -22,4 +22,27 @@
 
         </sql>
     </changeSet>
+
+    <changeSet id="ver.1.0.2" author="eric.liu" dbms="mysql">
+        <sql>
+            CREATE TABLE IF NOT EXISTS `blog` (
+            `id` bigint NOT NULL AUTO_INCREMENT,
+            `userId` bigint NOT NULL,
+            `title` varchar(256) NOT NULL,
+            `content` MEDIUMTEXT NOT NULL,
+            `status` enum('DRAFT','PUBLISHED') NOT NULL DEFAULT 'DRAFT',
+            `tags` JSON DEFAULT NULL,
+            `deleted` TINYINT DEFAULT '0',
+            `createDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            `updateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (`id`),
+            KEY `status_title_idx` (`status`, `title`),
+            KEY `delete_status_title_idx` (`deleted`, `status`, `title`),
+            KEY `userId_idx` (`userId`)
+            ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+        </sql>
+    </changeSet>
+
+
 </databaseChangeLog>

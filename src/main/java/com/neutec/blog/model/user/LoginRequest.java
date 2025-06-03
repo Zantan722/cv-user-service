@@ -9,6 +9,7 @@ import lombok.Data;
 public class LoginRequest {
 
 
+    @NotBlank(message = "電子郵件不能為空")
     @Schema(description = "電子郵件", example = "john@example.com")
     @Pattern(
         regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
