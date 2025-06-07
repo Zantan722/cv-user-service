@@ -4,6 +4,7 @@ import com.neutec.blog.constant.UrlConstant;
 import com.neutec.blog.model.Page;
 import com.neutec.blog.model.blog.BlogDTO;
 import com.neutec.blog.model.blog.CommonBlogCriteria;
+import com.neutec.blog.response.BlogRestController;
 import com.neutec.blog.service.BlogService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "Blog API", description = "一般用戶Blog操作")
 @RequestMapping(UrlConstant.COMMON_PATH)
-@RestController
+@BlogRestController
 public class BlogController {
 
 

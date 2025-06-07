@@ -6,6 +6,8 @@ import com.neutec.blog.enums.BlogStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class BlogCriteria implements IBlogCriteria {
 
@@ -35,4 +37,13 @@ public class BlogCriteria implements IBlogCriteria {
 
     @Schema(description = "呈現筆數")
     private Integer limit;
+
+    @Schema(description = "開始日期")
+    private Date dateFrom;
+
+    @Schema(description = "結束日期")
+    private Date dateTo;
+
+    @Schema(description = "作者名稱")
+    private String authorName;
 }

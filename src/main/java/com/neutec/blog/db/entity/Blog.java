@@ -3,6 +3,7 @@ package com.neutec.blog.db.entity;
 import com.neutec.blog.enums.BlogStatus;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Generated;
 import lombok.experimental.FieldNameConstants;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -10,11 +11,12 @@ import org.hibernate.type.SqlTypes;
 
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @FieldNameConstants
 @Entity
 @Table(name = "blog")
-public class Blog {
+public class Blog extends GenerateEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

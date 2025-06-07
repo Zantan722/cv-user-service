@@ -1,5 +1,7 @@
 package com.neutec.blog.model.blog;
 
+import java.util.Date;
+
 public interface IBlogCriteria {
     Long getId();
     String getTitle();
@@ -18,6 +20,12 @@ public interface IBlogCriteria {
 
     Boolean getContainDeleted();
 
+    Date getDateFrom();
+
+    Date getDateTo();
+
+    String getAuthorName();
+
     void setId(Long id);
 
     void setTitle(String title);
@@ -35,4 +43,10 @@ public interface IBlogCriteria {
     void setLimit(Integer limit);
 
     void setContainDeleted(Boolean deleted);
+
+    void setDateFrom(Date dateFrom);
+
+    void setDateTo(Date dateTo);
+
+    void setAuthorName(String authorName);
 }

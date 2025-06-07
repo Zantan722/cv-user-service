@@ -1,6 +1,7 @@
 package com.neutec.blog.db.dao;
 
 import com.neutec.blog.db.entity.Blog;
+import com.neutec.blog.db.entity.GenerateEntity;
 import com.neutec.blog.model.blog.BlogDTO;
 import com.neutec.blog.model.blog.IBlogCriteria;
 import jakarta.persistence.EntityManager;
@@ -54,11 +55,15 @@ public class BlogRepository extends SimpleJpaRepository<Blog, Long> {
      */
 
     public long count(IBlogCriteria criteria) {
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Long> cq = cb.createQuery(Long.class);
-        Root<Blog> root = cq.from(Blog.class);
-        prepareQuery(root, cq, cb, criteria);
-        return em.createQuery(cq.select(cb.count(root))).getSingleResult();
+        StringBuilder sql = new StringBuilder("SELECT count(*) " +
+            "FROM blog b " +
+            "JOIN users u ON b.userId = u.id " +
+            "WHERE 1=1 ");
+        Map<String, Object> params = new HashMap<>();
+        prepareQuery(criteria, params, sql);
+        Query query = em.createNativeQuery(sql.toString(), Long.class);
+        params.forEach(query::setParameter);
+        return (long) query.getSingleResult();
     }
 
     /**
@@ -107,6 +112,9 @@ public class BlogRepository extends SimpleJpaRepository<Blog, Long> {
     private void prepareQuery(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb, IBlogCriteria criteria) {
         List<Predicate> predicates = new ArrayList<>();
 
+        if (criteria.getId() != null) {
+            predicates.add(cb.equal(root.get(Blog.Fields.id), criteria.getId()));
+        }
         if (criteria.getAuthorId() != null) {
             predicates.add(cb.equal(root.get(Blog.Fields.userId), criteria.getAuthorId()));
         }
@@ -130,6 +138,11 @@ public class BlogRepository extends SimpleJpaRepository<Blog, Long> {
     }
 
     private void prepareQuery(IBlogCriteria criteria, Map<String, Object> params, StringBuilder sql) {
+        if (criteria.getId() != null) {
+            params.put(Blog.Fields.id, criteria.getId());
+            sql.append(" AND b.id = :" + Blog.Fields.id);
+        }
+
 
         if (criteria.getAuthorId() != null) {
             params.put(Blog.Fields.userId, criteria.getAuthorId());
@@ -139,21 +152,35 @@ public class BlogRepository extends SimpleJpaRepository<Blog, Long> {
             params.put(Blog.Fields.title, "%" + criteria.getTitle().trim() + "%");
             sql.append(" AND b.title LIKE :" + Blog.Fields.title);
         }
-//        if (Objects.equals(Boolean.FALSE, criteria.getContainDeleted())) {
-//            params.put(Blog.Fields.deleted, criteria.getContainDeleted());
-//            sql.append(" AND b.deleted = :" + Blog.Fields.deleted);
-//        }
-//        if (criteria.getStatus() != null) {
-//            params.put(Blog.Fields.status, criteria.getStatus());
-//            sql.append(" AND b.status = :" + Blog.Fields.status);
-//        }
+        if (Objects.equals(Boolean.FALSE, criteria.getContainDeleted())) {
+            params.put(Blog.Fields.deleted, criteria.getContainDeleted());
+            sql.append(" AND b.deleted = :" + Blog.Fields.deleted);
+        }
+        if (criteria.getStatus() != null) {
+            params.put(Blog.Fields.status, criteria.getStatus().name());
+            sql.append(" AND b.status = :" + Blog.Fields.status);
+        }
+
+        if (criteria.getAuthorName() != null && !criteria.getAuthorName().trim().isEmpty()) {
+            params.put("authorName", "%" + criteria.getAuthorName().trim() + "%");
+            sql.append(" AND u.name LIKE :authorName");
+
+        }
+        if (criteria.getDateFrom() != null) {
+            params.put(GenerateEntity.Fields.createDate, criteria.getDateFrom());
+            sql.append(" AND b.createDate >= :" + GenerateEntity.Fields.createDate);
+        }
+        if (criteria.getDateTo() != null) {
+            params.put(GenerateEntity.Fields.updateDate, criteria.getDateTo());
+            sql.append(" AND b.updateDate < :" + GenerateEntity.Fields.updateDate);
+        }
 
         if (criteria.getOrderBy() != null) {
             // 處理排序
             if (criteria.getSort() == null || criteria.getSort() == com.neutec.blog.enums.Sort.ASC) {
-                sql.append(" ORDER BY " + criteria.getOrderBy().getOrderByFieldName() + " ASC");
+                sql.append(" ORDER BY b." + criteria.getOrderBy().getOrderByFieldName() + " ASC");
             } else {
-                sql.append(" ORDER BY " + criteria.getOrderBy().getOrderByFieldName() + " DESC");
+                sql.append(" ORDER BY b." + criteria.getOrderBy().getOrderByFieldName() + " DESC");
             }
         }
     }

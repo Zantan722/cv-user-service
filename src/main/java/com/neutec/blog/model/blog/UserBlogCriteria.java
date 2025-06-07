@@ -7,6 +7,8 @@ import com.neutec.blog.enums.Sort;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * 通用的Blog查詢條件
  */
@@ -39,6 +41,12 @@ public class UserBlogCriteria implements IBlogCriteria {
     @Schema(description = "呈現筆數", example = "10")
     private Integer limit = 10;
 
+    @Schema(description = "開始日期")
+    private Date dateFrom;
+
+    @Schema(description = "結束日期")
+    private Date dateTo;
+
 
     @Override
     @JsonIgnore
@@ -47,7 +55,17 @@ public class UserBlogCriteria implements IBlogCriteria {
     }
 
     @Override
+    public String getAuthorName() {
+        return null;
+    }
+
+    @Override
     public void setContainDeleted(Boolean deleted) {
+
+    }
+
+    @Override
+    public void setAuthorName(String authorName) {
 
     }
 }

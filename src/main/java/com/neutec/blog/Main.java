@@ -9,7 +9,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 
 @SpringBootApplication
-@EnableAsync
 @ComponentScan({"com.neutec.blog"})
 public class Main {
 

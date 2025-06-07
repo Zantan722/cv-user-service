@@ -6,6 +6,7 @@ import com.neutec.blog.model.blog.BlogCreateRequest;
 import com.neutec.blog.model.blog.BlogDTO;
 import com.neutec.blog.model.blog.BlogUpdateRequest;
 import com.neutec.blog.model.blog.UserBlogCriteria;
+import com.neutec.blog.response.BlogRestController;
 import com.neutec.blog.service.BlogService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import static com.neutec.blog.constant.HttpConstant.ATTRIBUTE_USER_ID;
 
 @Tag(name = "User Blog API", description = "用戶Blog操作")
-@RestController
+@BlogRestController
 public class UserBlogController {
 
     @Autowired

@@ -4,6 +4,7 @@ import com.neutec.blog.constant.UrlConstant;
 import com.neutec.blog.model.Page;
 import com.neutec.blog.model.blog.BlogCriteria;
 import com.neutec.blog.model.blog.BlogDTO;
+import com.neutec.blog.response.BlogRestController;
 import com.neutec.blog.service.BlogService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -14,7 +15,7 @@ import static com.neutec.blog.constant.HttpConstant.ATTRIBUTE_USER_ID;
 
 @Tag(name = "ADMIN Blog API", description = "管理者Blog操作")
 @RequestMapping(UrlConstant.ADMIN_PATH)
-@RestController
+@BlogRestController
 public class AdminBlogController {
 
     @Autowired
