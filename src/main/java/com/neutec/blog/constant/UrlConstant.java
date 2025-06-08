@@ -4,6 +4,7 @@ public class UrlConstant {
 
     public static final String COMMON_PATH = "/common/";
     public static final String ADMIN_PATH = "/admin/";
+    public static final String USER_PATH = "/user/";
 
     public static final String[] PUBLIC_PATTERN_PATHS = new String[] {
         COMMON_PATH,

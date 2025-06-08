@@ -90,7 +90,7 @@ public class BlogRepository extends SimpleJpaRepository<Blog, Long> {
      * 根據條件查找Blog列表
      */
     public List<BlogDTO> findDTO(IBlogCriteria criteria) {
-        StringBuilder sql = new StringBuilder("SELECT b.id, b.title, b.content, b.tags, b.status, b.createDate, b.updateDate, u.name AS author " +
+        StringBuilder sql = new StringBuilder("SELECT b.id, b.title, b.content, b.tags, b.status, b.createDate, b.updateDate, u.name AS author, u.id as userId, b.deleted  " +
             "FROM blog b " +
             "JOIN users u ON b.userId = u.id " +
             "WHERE 1=1 ");

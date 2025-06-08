@@ -6,8 +6,6 @@ import com.neutec.blog.config.ObjectMapperConfig;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
 import java.util.Date;
 import java.util.List;
@@ -31,14 +29,19 @@ public class BlogDTO {
     private Date updateDate;
     @Schema(description = "作者")
     private String author;
+    @Schema(description = "作者ID")
+    private Long userId;
+    @Schema(description = "是否已刪除")
+    private boolean deleted;
 
 
-    public BlogDTO(Long id, String title, String content, String tags, String status, Date createDate, Date updateDate, String author) {
+    public BlogDTO(Long id, String title, String content, String tags, String status, Date createDate, Date updateDate, String author, Long userId, int deleted) {
         this.id = id;
         this.title = title;
         this.content = content;
         try {
-            this.tags = new ObjectMapperConfig().objectMapper().readValue(tags, new TypeReference<List<String>>() {});
+            this.tags = new ObjectMapperConfig().objectMapper().readValue(tags, new TypeReference<List<String>>() {
+            });
         } catch (JsonProcessingException e) {
             // ignore;
             log.error("Error parsing tags JSON: {}", e.getMessage());
@@ -47,5 +50,7 @@ public class BlogDTO {
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.author = author;
+        this.userId = userId;
+        this.deleted = deleted == 1;
     }
 }

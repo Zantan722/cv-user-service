@@ -84,6 +84,19 @@ public class BlogService {
         return true;
     }
 
+    public Blog updateBlogByAdmin(Long userId, BlogUpdateRequest updateRequest) {
+        Blog blog = findById(updateRequest.getId());
+        User user = userService.findById(userId);
+        if (user == null || !user.getRole().equals(ADMIN)) {
+            throw new BlogException("Only admin can update blogs");
+        }
+        blog.setTitle(updateRequest.getTitle());
+        blog.setContent(updateRequest.getContent());
+        blog.setTags(updateRequest.getTags());
+        blog.setStatus(updateRequest.getStatus());
+        return blogRepository.save(blog);
+    }
+
     public boolean deleteBlogByAdmin(Long userId, Long id) {
         Blog blog = findById(id);
         User user = userService.findById(userId);

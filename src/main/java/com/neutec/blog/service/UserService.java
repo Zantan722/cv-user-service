@@ -3,6 +3,7 @@ package com.neutec.blog.service;
 import com.neutec.blog.db.dao.UserRepository;
 import com.neutec.blog.db.entity.User;
 import com.neutec.blog.excption.UserException;
+import com.neutec.blog.model.user.UserInfoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -55,6 +56,15 @@ public class UserService {
     public User findById(Long userId){
         return userRepo.findById(userId)
                 .orElseThrow(() -> new UserException("User with ID " + userId + " not found."));
+    }
+
+    public UserInfoDTO getProfile(Long userId){
+        User user = findById(userId);
+        UserInfoDTO userInfo = new UserInfoDTO();
+        userInfo.setId(user.getId());
+        userInfo.setEmail(user.getEmail());
+        userInfo.setName(user.getName());
+        return userInfo;
     }
 
     /**

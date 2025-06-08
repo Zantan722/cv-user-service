@@ -1,5 +1,6 @@
 package com.neutec.blog.controller.user;
 
+import com.neutec.blog.constant.UrlConstant;
 import com.neutec.blog.db.entity.Blog;
 import com.neutec.blog.model.Page;
 import com.neutec.blog.model.blog.BlogCreateRequest;
@@ -18,6 +19,7 @@ import static com.neutec.blog.constant.HttpConstant.ATTRIBUTE_USER_ID;
 
 @Tag(name = "User Blog API", description = "用戶Blog操作")
 @BlogRestController
+@RequestMapping(UrlConstant.USER_PATH)
 public class UserBlogController {
 
     @Autowired
@@ -52,7 +54,7 @@ public class UserBlogController {
 
     @DeleteMapping("blog/{id}")
     @Operation(summary = "刪除blog", description = "刪除blog")
-    public void updateBlog(
+    public void deleteBlog(
         @RequestAttribute(name = ATTRIBUTE_USER_ID) Long userId,
         @PathVariable Long id) {
         blogService.deleteBlog(userId, id);
