@@ -19,7 +19,7 @@ public class LoginRequest {
 
     @NotBlank(message = "密碼不能為空")
     @Pattern(
-        regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)[A-Za-z\\\\d@$!%*?&]{10,}$",
+        regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d@$!%*?&]{10,}$",
         message = "密碼必須包含大小寫字母和數字，長度至少10位"
     )
     @Schema(description = "密碼", example = "Password123")
