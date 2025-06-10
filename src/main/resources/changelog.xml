@@ -44,5 +44,11 @@
         </sql>
     </changeSet>
 
+    <changeSet id="ver.1.0.3" author="eric.liu">
+        <sql>
+            AlTER TABLE `users`
+            ADD INDEX `name_idx` (`name`)
+        </sql>
+    </changeSet>
 
 </databaseChangeLog>

@@ -10,6 +10,6 @@
 # 啟動Java應用
 #cd /app
 #mvn liquibase:update
-echo "執行 Liquibase 更新..."
-mvn liquibase:update -Dliquibase.propertyFile=./liquibase.properties
+#echo "執行 Liquibase 更新..."
+#mvn liquibase:update -Dliquibase.propertyFile=./liquibase.properties
 java -jar /app/app.jar
