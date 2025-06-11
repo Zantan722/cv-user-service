@@ -46,8 +46,18 @@
 
     <changeSet id="ver.1.0.3" author="eric.liu">
         <sql>
-            AlTER TABLE `users`
+            ALTER TABLE `users`
             ADD INDEX `name_idx` (`name`)
+        </sql>
+    </changeSet>
+
+    <changeSet id="ver.1.0.4" author="eric.liu">
+        <sql>
+            INSERT IGNORE INTO users (email, password, name, `role`)
+            VALUES ('admin@gmail.com', '$2a$10$kH7vKL7X/ZjpHnDdIzP8cuRYmtzX7yUDjLaDxC5/u5vBHaeS5siwW', 'Admin', 'ADMIN');
+
+            INSERT IGNORE INTO users (email, password, name, `role`)
+            VALUES ('user@gmail.com', '$2a$10$kH7vKL7X/ZjpHnDdIzP8cuRYmtzX7yUDjLaDxC5/u5vBHaeS5siwW', 'User', 'USER');
         </sql>
     </changeSet>
 

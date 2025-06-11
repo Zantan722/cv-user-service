@@ -36,10 +36,6 @@ public class JpaConfig {
 
         Map<String, String> mysqlJpaProperties = new HashMap<>();
 
-//        mysqlJpaProperties.put(DIALECT, MySQLDialect.class.getName());
-//        mysqlJpaProperties.put(PHYSICAL_NAMING_STRATEGY, PhysicalNamingStrategyStandardImpl.class.getName());
-//        mysqlJpaProperties.put(ENABLE_LAZY_LOAD_NO_TRANS,"true");
-//        mysqlJpaProperties.put("hibernate.proc.param_null_passing", "true");
         return builder
             .dataSource(mysqlDataSource)
             .packages("com.neutec.blog.db.entity")

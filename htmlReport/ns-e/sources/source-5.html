@@ -1,0 +1,183 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CommonBlogCriteria</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.neutec.blog.model.blog</a>
+</div>
+
+<h1>Coverage Summary for Class: CommonBlogCriteria (com.neutec.blog.model.blog)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CommonBlogCriteria</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    78.6%
+  </span>
+  <span class="absValue">
+    (11/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85%
+  </span>
+  <span class="absValue">
+    (17/20)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.neutec.blog.model.blog;
+&nbsp;
+&nbsp;import com.fasterxml.jackson.annotation.JsonIgnore;
+&nbsp;import com.neutec.blog.enums.BlogOrderBy;
+&nbsp;import com.neutec.blog.enums.BlogStatus;
+&nbsp;import com.neutec.blog.enums.Sort;
+&nbsp;import io.swagger.v3.oas.annotations.media.Schema;
+&nbsp;import lombok.Data;
+&nbsp;
+&nbsp;import java.util.Date;
+&nbsp;
+&nbsp;/**
+&nbsp; * 通用的Blog查詢條件
+&nbsp; */
+&nbsp;
+<b class="fc">&nbsp;@Data</b>
+&nbsp;public class CommonBlogCriteria implements IBlogCriteria {
+&nbsp;
+&nbsp;    @Schema(description = &quot;Blog Id&quot;)
+<b class="fc">&nbsp;    private Long id;</b>
+&nbsp;
+&nbsp;    @Schema(description = &quot;標題&quot;)
+<b class="fc">&nbsp;    private String title;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Schema(description = &quot;排序&quot;, example = &quot;BLOG_ID&quot;)</b>
+<b class="fc">&nbsp;    private BlogOrderBy orderBy = BlogOrderBy.BLOG_ID;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Schema(description = &quot;正序/反序&quot;, example = &quot;ASC&quot;)</b>
+<b class="fc">&nbsp;    private Sort sort = Sort.ASC;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Schema(description = &quot;略過筆數&quot;, example = &quot;0&quot;)</b>
+<b class="fc">&nbsp;    private Integer skip = 0;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Schema(description = &quot;呈現筆數&quot;, example = &quot;10&quot;)</b>
+<b class="fc">&nbsp;    private Integer limit = 10;</b>
+&nbsp;
+&nbsp;    @Schema(description = &quot;開始日期&quot;)
+<b class="fc">&nbsp;    private Date dateFrom;</b>
+&nbsp;
+&nbsp;    @Schema(description = &quot;結束日期&quot;)
+<b class="fc">&nbsp;    private Date dateTo;</b>
+&nbsp;
+&nbsp;    @Schema(description = &quot;作者名稱&quot;)
+<b class="fc">&nbsp;    private String authorName;</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    @JsonIgnore
+&nbsp;    public Long getAuthorId() {
+<b class="fc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    @JsonIgnore
+&nbsp;    public BlogStatus getStatus() {
+<b class="fc">&nbsp;        return BlogStatus.PUBLISHED;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    @JsonIgnore
+&nbsp;    public Boolean getContainDeleted() {
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    @Deprecated
+&nbsp;    public void setAuthorId(Long authorId) {
+&nbsp;
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    @Deprecated
+&nbsp;    public void setStatus(BlogStatus status) {
+&nbsp;
+<b class="nc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void setContainDeleted(Boolean deleted) {
+&nbsp;
+<b class="nc">&nbsp;    }</b>
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-12 01:55</div>
+</div>
+</body>
+</html>

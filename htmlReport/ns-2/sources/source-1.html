@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > JpaConfig</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.neutec.blog.config</a>
+</div>
+
+<h1>Coverage Summary for Class: JpaConfig (com.neutec.blog.config)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">JpaConfig</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/10)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">JpaConfig$$SpringCGLIB$$0</td>
+  </tr>
+  <tr>
+    <td class="name">JpaConfig$$SpringCGLIB$$FastClass$$0</td>
+  </tr>
+  <tr>
+    <td class="name">JpaConfig$$SpringCGLIB$$FastClass$$1</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/10)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.neutec.blog.config;
+&nbsp;
+&nbsp;import jakarta.persistence.EntityManager;
+&nbsp;import jakarta.persistence.EntityManagerFactory;
+&nbsp;import org.springframework.beans.factory.annotation.Qualifier;
+&nbsp;import org.springframework.boot.autoconfigure.domain.EntityScan;
+&nbsp;import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
+&nbsp;import org.springframework.context.annotation.Bean;
+&nbsp;import org.springframework.context.annotation.Configuration;
+&nbsp;import org.springframework.context.annotation.Primary;
+&nbsp;import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+&nbsp;import org.springframework.orm.jpa.JpaTransactionManager;
+&nbsp;import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+&nbsp;import org.springframework.orm.jpa.SharedEntityManagerCreator;
+&nbsp;import org.springframework.transaction.PlatformTransactionManager;
+&nbsp;import org.springframework.transaction.annotation.EnableTransactionManagement;
+&nbsp;
+&nbsp;import javax.sql.DataSource;
+&nbsp;import java.util.HashMap;
+&nbsp;import java.util.Map;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;@Configuration
+&nbsp;@EnableTransactionManagement
+&nbsp;@EntityScan(basePackages = &quot;com.neutec.blog.db.entity&quot;)
+&nbsp;@EnableJpaRepositories(
+&nbsp;    entityManagerFactoryRef = &quot;mysqlEntityManagerFactory&quot;,
+&nbsp;    transactionManagerRef = &quot;mysqlTransactionManager&quot;,
+&nbsp;    basePackages = &quot;com.neutec.blog.db.dao&quot;)
+<b class="fc">&nbsp;public class JpaConfig {</b>
+&nbsp;    // JPA 相關配置
+&nbsp;    @Primary
+&nbsp;    @Bean(name = &quot;mysqlEntityManagerFactory&quot;)
+&nbsp;    public LocalContainerEntityManagerFactoryBean mysqlEntityManagerFactory(
+&nbsp;        EntityManagerFactoryBuilder builder, DataSource mysqlDataSource) {
+&nbsp;
+<b class="fc">&nbsp;        Map&lt;String, String&gt; mysqlJpaProperties = new HashMap&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;        return builder</b>
+<b class="fc">&nbsp;            .dataSource(mysqlDataSource)</b>
+<b class="fc">&nbsp;            .packages(&quot;com.neutec.blog.db.entity&quot;)</b>
+<b class="fc">&nbsp;            .persistenceUnit(&quot;mysql&quot;)</b>
+<b class="fc">&nbsp;            .properties(mysqlJpaProperties)</b>
+<b class="fc">&nbsp;            .build();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Primary
+&nbsp;    @Bean(name = &quot;mysqlEntityManager&quot;)
+&nbsp;    public EntityManager mysqlEntityManager(@Qualifier(&quot;mysqlEntityManagerFactory&quot;) LocalContainerEntityManagerFactoryBean factory) {
+<b class="fc">&nbsp;        return SharedEntityManagerCreator.createSharedEntityManager(Objects.requireNonNull(factory.getObject()));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Primary
+&nbsp;    @Bean(name = &quot;mysqlTransactionManager&quot;)
+&nbsp;    public PlatformTransactionManager mysqlTransactionManager(
+&nbsp;        @Qualifier(&quot;mysqlEntityManagerFactory&quot;) EntityManagerFactory mysqlEntityManagerFactory) {
+&nbsp;
+<b class="fc">&nbsp;        return new JpaTransactionManager(mysqlEntityManagerFactory);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-12 01:55</div>
+</div>
+</body>
+</html>

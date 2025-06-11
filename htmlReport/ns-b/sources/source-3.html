@@ -1,0 +1,160 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ExceptionAdvice</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.neutec.blog.excption</a>
+</div>
+
+<h1>Coverage Summary for Class: ExceptionAdvice (com.neutec.blog.excption)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ExceptionAdvice</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    76.9%
+  </span>
+  <span class="absValue">
+    (10/13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.neutec.blog.excption;
+&nbsp;
+&nbsp;import org.springframework.http.HttpHeaders;
+&nbsp;import org.springframework.http.HttpStatus;
+&nbsp;import org.springframework.http.HttpStatusCode;
+&nbsp;import org.springframework.http.ResponseEntity;
+&nbsp;import org.springframework.lang.NonNull;
+&nbsp;import org.springframework.lang.Nullable;
+&nbsp;import org.springframework.web.bind.MethodArgumentNotValidException;
+&nbsp;import org.springframework.web.bind.annotation.ControllerAdvice;
+&nbsp;import org.springframework.web.bind.annotation.ExceptionHandler;
+&nbsp;import org.springframework.web.context.request.WebRequest;
+&nbsp;import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+&nbsp;
+&nbsp;@ControllerAdvice
+&nbsp;public class ExceptionAdvice extends ResponseEntityExceptionHandler {
+<b class="fc">&nbsp;    public ExceptionAdvice() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @NonNull
+&nbsp;    @Override
+&nbsp;    protected ResponseEntity&lt;Object&gt; handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+<b class="fc">&nbsp;        ErrorResponse body = new ErrorResponse(ex.getBindingResult().getAllErrors().get(0).getDefaultMessage());</b>
+&nbsp;
+<b class="fc">&nbsp;        return this.handleExceptionInternal(ex, body.throwableToResult(), new HttpHeaders(), HttpStatus.OK, request);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @NonNull
+&nbsp;    @ExceptionHandler({Exception.class})
+&nbsp;    protected ResponseEntity&lt;Object&gt; handleException(@NonNull Throwable ex, @NonNull WebRequest request) {
+<b class="nc">&nbsp;        return this.handleExceptionInternal((Exception) ex, (Object) null, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @NonNull
+&nbsp;    @ExceptionHandler({ServiceException.class})
+&nbsp;    protected ResponseEntity&lt;Object&gt; handleCarPlusException(@NonNull ServiceException ex, @NonNull WebRequest request) {
+<b class="fc">&nbsp;        ErrorResponse body = new ErrorResponse(ex.getMessage());</b>
+<b class="fc">&nbsp;        return this.handleExceptionInternal(ex, body.throwableToResult(), new HttpHeaders(), HttpStatus.OK, request);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @NonNull
+&nbsp;    protected ResponseEntity&lt;Object&gt; handleExceptionInternal(@NonNull Exception ex, @Nullable Object body, @NonNull HttpHeaders headers, @NonNull HttpStatus status, @NonNull WebRequest request) {
+<b class="fc">&nbsp;        String errorInfo = ex.getClass().getName() + &quot;：&quot; + ex.getMessage();</b>
+<b class="fc">&nbsp;        if (status.is5xxServerError()) {</b>
+<b class="nc">&nbsp;            ex.printStackTrace();</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        Object _body = body;</b>
+<b class="fc">&nbsp;        if (body == null) {</b>
+<b class="nc">&nbsp;            _body = new ErrorResponse(errorInfo).throwableToResult();</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return super.handleExceptionInternal(ex, _body, headers, status, request);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-12 01:55</div>
+</div>
+</body>
+</html>

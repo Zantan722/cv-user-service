@@ -1,0 +1,152 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > BlogCriteria</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.neutec.blog.model.blog</a>
+</div>
+
+<h1>Coverage Summary for Class: BlogCriteria (com.neutec.blog.model.blog)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BlogCriteria</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (12/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.neutec.blog.model.blog;
+&nbsp;
+&nbsp;import com.neutec.blog.enums.BlogOrderBy;
+&nbsp;import com.neutec.blog.enums.Sort;
+&nbsp;import com.neutec.blog.enums.BlogStatus;
+&nbsp;import io.swagger.v3.oas.annotations.media.Schema;
+&nbsp;import lombok.Data;
+&nbsp;
+&nbsp;import java.util.Date;
+&nbsp;
+<b class="fc">&nbsp;@Data</b>
+&nbsp;public class BlogCriteria implements IBlogCriteria {
+&nbsp;
+&nbsp;    @Schema(description = &quot;Blog Id&quot;)
+<b class="fc">&nbsp;    private Long id;</b>
+&nbsp;
+&nbsp;    @Schema(description = &quot;標題&quot;)
+<b class="fc">&nbsp;    private String title;</b>
+&nbsp;
+&nbsp;    @Schema(description = &quot;作者ID&quot;)
+<b class="fc">&nbsp;    private Long authorId;</b>
+&nbsp;
+&nbsp;    @Schema(description = &quot;狀態&quot;)
+<b class="fc">&nbsp;    private BlogStatus status;</b>
+&nbsp;
+&nbsp;    @Schema(description = &quot;排序&quot;)
+<b class="fc">&nbsp;    private BlogOrderBy orderBy;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Schema(description = &quot;正序/反序&quot;)</b>
+<b class="fc">&nbsp;    private Sort sort = Sort.ASC;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Schema(description = &quot;是否包含已刪除&quot;)</b>
+<b class="fc">&nbsp;    private Boolean containDeleted = false;</b>
+&nbsp;
+&nbsp;    @Schema(description = &quot;略過筆數&quot;)
+<b class="fc">&nbsp;    private Integer skip;</b>
+&nbsp;
+&nbsp;    @Schema(description = &quot;呈現筆數&quot;)
+<b class="fc">&nbsp;    private Integer limit;</b>
+&nbsp;
+&nbsp;    @Schema(description = &quot;開始日期&quot;)
+<b class="fc">&nbsp;    private Date dateFrom;</b>
+&nbsp;
+&nbsp;    @Schema(description = &quot;結束日期&quot;)
+<b class="fc">&nbsp;    private Date dateTo;</b>
+&nbsp;
+&nbsp;    @Schema(description = &quot;作者名稱&quot;)
+<b class="fc">&nbsp;    private String authorName;</b>
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-12 01:55</div>
+</div>
+</body>
+</html>

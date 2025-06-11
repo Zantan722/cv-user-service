@@ -1,0 +1,136 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Page</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.neutec.blog.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Page (com.neutec.blog.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Page</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90.9%
+  </span>
+  <span class="absValue">
+    (10/11)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.neutec.blog.model;
+&nbsp;
+&nbsp;import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+&nbsp;import lombok.Data;
+&nbsp;import org.springframework.lang.Nullable;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Optional;
+&nbsp;
+<b class="nc">&nbsp;@Data</b>
+&nbsp;@JsonPropertyOrder({&quot;total&quot;, &quot;list&quot;, &quot;skip&quot;, &quot;limit&quot;})
+&nbsp;public class Page&lt;E&gt; {
+&nbsp;
+<b class="fc">&nbsp;    private long total;</b>
+&nbsp;
+<b class="fc">&nbsp;    private long skip;</b>
+&nbsp;
+<b class="fc">&nbsp;    private int limit;</b>
+&nbsp;
+<b class="fc">&nbsp;    private List&lt;E&gt; list;</b>
+&nbsp;
+<b class="fc">&nbsp;    private Page(long total, @Nullable List&lt;E&gt; list, long skip, int limit) {</b>
+<b class="fc">&nbsp;        this.total = total;</b>
+<b class="fc">&nbsp;        this.skip = skip;</b>
+<b class="fc">&nbsp;        this.limit = limit;</b>
+<b class="fc">&nbsp;        this.list = Optional.ofNullable(list).orElseGet(ArrayList::new);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static &lt;E&gt; Page&lt;E&gt; of(long total, @Nullable List&lt;E&gt; list, long skip, int limit) {
+<b class="fc">&nbsp;        return new Page&lt;&gt;(total, list, skip, limit);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-12 01:55</div>
+</div>
+</body>
+</html>

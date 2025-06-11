@@ -6,7 +6,7 @@ WORKDIR /app
 
 # 複製Maven/Gradle構建文件
 COPY pom.xml ./
-COPY liquibase-docker.properties ./liquibase.properties
+
 # 複製源代碼
 COPY src ./src
 

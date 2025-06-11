@@ -1,0 +1,143 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > UrlConstant</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.neutec.blog.constant</a>
+</div>
+
+<h1>Coverage Summary for Class: UrlConstant (com.neutec.blog.constant)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UrlConstant</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    92.3%
+  </span>
+  <span class="absValue">
+    (12/13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.neutec.blog.constant;
+&nbsp;
+<b class="nc">&nbsp;public class UrlConstant {</b>
+&nbsp;
+&nbsp;    public static final String COMMON_PATH = &quot;/common/&quot;;
+&nbsp;    public static final String ADMIN_PATH = &quot;/admin/&quot;;
+&nbsp;    public static final String USER_PATH = &quot;/user/&quot;;
+&nbsp;
+<b class="fc">&nbsp;    public static final String[] PUBLIC_PATTERN_PATHS = new String[] {</b>
+&nbsp;        COMMON_PATH,
+&nbsp;        &quot;/swagger-ui/&quot;,
+&nbsp;        &quot;v3/api-docs/&quot;
+&nbsp;    };
+&nbsp;
+<b class="fc">&nbsp;    public static final String[] ADMIN_PATTERN_PATH = new String[] {</b>
+&nbsp;        ADMIN_PATH,
+&nbsp;    };
+&nbsp;
+<b class="fc">&nbsp;    public static final String[] PUBLIC_PATHS = PUBLIC_PATHS();</b>
+&nbsp;
+<b class="fc">&nbsp;    public static final String[] ADMIN_PATHS = ADMIN_PATHS();</b>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    private static String[] PUBLIC_PATHS() {
+<b class="fc">&nbsp;        String[] paths = new String[PUBLIC_PATTERN_PATHS.length];</b>
+<b class="fc">&nbsp;        for (int i = 0; i &lt; PUBLIC_PATTERN_PATHS.length; i++) {</b>
+<b class="fc">&nbsp;            paths[i] = PUBLIC_PATTERN_PATHS[i] + &quot;**&quot;;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return paths;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static String[] ADMIN_PATHS() {
+<b class="fc">&nbsp;        String[] paths = new String[ADMIN_PATTERN_PATH.length];</b>
+<b class="fc">&nbsp;        for (int i = 0; i &lt; ADMIN_PATTERN_PATH.length; i++) {</b>
+<b class="fc">&nbsp;            paths[i] = ADMIN_PATTERN_PATH[i] + &quot;**&quot;;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return paths;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-12 01:55</div>
+</div>
+</body>
+</html>

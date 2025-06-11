@@ -1,0 +1,119 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > IBlogCriteria</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.neutec.blog.model.blog</a>
+</div>
+
+<h1>Coverage Summary for Class: IBlogCriteria (com.neutec.blog.model.blog)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">IBlogCriteria</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.neutec.blog.model.blog;
+&nbsp;
+&nbsp;import java.util.Date;
+&nbsp;
+&nbsp;public interface IBlogCriteria {
+&nbsp;    Long getId();
+&nbsp;    String getTitle();
+&nbsp;
+&nbsp;    Long getAuthorId();
+&nbsp;
+&nbsp;    com.neutec.blog.enums.BlogStatus getStatus();
+&nbsp;
+&nbsp;    com.neutec.blog.enums.BlogOrderBy getOrderBy();
+&nbsp;
+&nbsp;    com.neutec.blog.enums.Sort getSort();
+&nbsp;
+&nbsp;    Integer getSkip();
+&nbsp;
+&nbsp;    Integer getLimit();
+&nbsp;
+&nbsp;    Boolean getContainDeleted();
+&nbsp;
+&nbsp;    Date getDateFrom();
+&nbsp;
+&nbsp;    Date getDateTo();
+&nbsp;
+&nbsp;    String getAuthorName();
+&nbsp;
+&nbsp;    void setId(Long id);
+&nbsp;
+&nbsp;    void setTitle(String title);
+&nbsp;
+&nbsp;    void setAuthorId(Long authorId);
+&nbsp;
+&nbsp;    void setStatus(com.neutec.blog.enums.BlogStatus status);
+&nbsp;
+&nbsp;    void setOrderBy(com.neutec.blog.enums.BlogOrderBy orderBy);
+&nbsp;
+&nbsp;    void setSort(com.neutec.blog.enums.Sort sort);
+&nbsp;
+&nbsp;    void setSkip(Integer skip);
+&nbsp;
+&nbsp;    void setLimit(Integer limit);
+&nbsp;
+&nbsp;    void setContainDeleted(Boolean deleted);
+&nbsp;
+&nbsp;    void setDateFrom(Date dateFrom);
+&nbsp;
+&nbsp;    void setDateTo(Date dateTo);
+&nbsp;
+&nbsp;    void setAuthorName(String authorName);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-12 01:55</div>
+</div>
+</body>
+</html>
