@@ -35,10 +35,18 @@ docker-compose up
 請直接到 https://cv-front-end-683332902245.asia-east1.run.app 進行使用
 
 ## 測試帳號
+### ADMIN帳號
+
 帳號：admin@gmail.com
 
 密碼：Aaa123123123
 
+
+### USER帳號
+
+帳號：test@gmail.com
+
+密碼：Aaa123123123
 ## SWAGGER路徑
 http://localhost:8080/swagger-ui/index.html
 
