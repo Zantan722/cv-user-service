@@ -1,9 +1,6 @@
 package com.neutec.blog.controller;
 
 import com.neutec.blog.constant.UrlConstant;
-import com.neutec.blog.db.entity.Blog;
-import com.neutec.blog.model.blog.BlogDTO;
-import com.neutec.blog.model.blog.BlogUpdateRequest;
 import com.neutec.blog.model.login.LoginRequest;
 import com.neutec.blog.model.user.RegisterRequest;
 import com.neutec.blog.response.BlogRestController;
@@ -13,10 +10,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-
-import static com.neutec.blog.constant.HttpConstant.ATTRIBUTE_USER_ID;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Tag(name = "Auth API", description = "Authentication related operations")
 @RequestMapping(UrlConstant.COMMON_PATH)
@@ -37,13 +33,6 @@ public class AuthController {
     @Operation(summary = "註冊", description = "註冊新用戶")
     public void register(@Valid @RequestBody RegisterRequest registerRequest) {
         userService.registerUser(registerRequest.getName(), registerRequest.getEmail(), registerRequest.getPassword());
-    }
-
-
-    @PutMapping("blog")
-    @Operation(summary = "異動blog", description = "編輯blog內容")
-    public Integer updateBlog() {
-       return 123;
     }
 
 }

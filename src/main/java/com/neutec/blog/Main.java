@@ -19,10 +19,6 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 
-    public static ApplicationContext getContext() {
-        return context;
-    }
-
     @Autowired
     public void setContext(ApplicationContext context) {
         Main.context = context;

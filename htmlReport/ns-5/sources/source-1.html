@@ -51,18 +51,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    50%
+    100%
   </span>
   <span class="absValue">
-    (2/4)
+    (4/4)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    40%
+    100%
   </span>
   <span class="absValue">
-    (2/5)
+    (5/5)
   </span>
 </td>
 </tr>
@@ -112,8 +112,8 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;    public BlogDTO updateBlog(
 &nbsp;        @RequestAttribute(name = ATTRIBUTE_USER_ID) Long userId,
 &nbsp;        @Valid @RequestBody BlogUpdateRequest updateRequest) {
-<b class="nc">&nbsp;        Blog blog = blogService.updateBlogByAdmin(userId, updateRequest);</b>
-<b class="nc">&nbsp;        return blogService.findById(blog.getId(), false);</b>
+<b class="fc">&nbsp;        Blog blog = blogService.updateBlogByAdmin(userId, updateRequest);</b>
+<b class="fc">&nbsp;        return blogService.findById(blog.getId(), false);</b>
 &nbsp;    }
 &nbsp;
 &nbsp;    @DeleteMapping(&quot;blog/{id}&quot;)
@@ -121,7 +121,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;    public void deleteBlog(
 &nbsp;        @RequestAttribute(name = ATTRIBUTE_USER_ID) Long userId,
 &nbsp;        @PathVariable Long id) {
-<b class="nc">&nbsp;        blogService.deleteBlogByAdmin(userId, id);</b>
+<b class="fc">&nbsp;        blogService.deleteBlogByAdmin(userId, id);</b>
 &nbsp;    }
 &nbsp;
 &nbsp;
@@ -149,7 +149,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2025-06-12 01:55</div>
+    <div style="float:right;">generated on 2025-06-13 01:47</div>
 </div>
 </body>
 </html>

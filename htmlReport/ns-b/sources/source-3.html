@@ -51,18 +51,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    80%
+    60%
   </span>
   <span class="absValue">
-    (4/5)
+    (3/5)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    76.9%
+    61.5%
   </span>
   <span class="absValue">
-    (10/13)
+    (8/13)
   </span>
 </td>
 </tr>
@@ -96,9 +96,9 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;    @NonNull
 &nbsp;    @Override
 &nbsp;    protected ResponseEntity&lt;Object&gt; handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-<b class="fc">&nbsp;        ErrorResponse body = new ErrorResponse(ex.getBindingResult().getAllErrors().get(0).getDefaultMessage());</b>
+<b class="nc">&nbsp;        ErrorResponse body = new ErrorResponse(ex.getBindingResult().getAllErrors().get(0).getDefaultMessage());</b>
 &nbsp;
-<b class="fc">&nbsp;        return this.handleExceptionInternal(ex, body.throwableToResult(), new HttpHeaders(), HttpStatus.OK, request);</b>
+<b class="nc">&nbsp;        return this.handleExceptionInternal(ex, body.throwableToResult(), new HttpHeaders(), HttpStatus.OK, request);</b>
 &nbsp;    }
 &nbsp;
 &nbsp;
@@ -154,7 +154,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2025-06-12 01:55</div>
+    <div style="float:right;">generated on 2025-06-13 01:47</div>
 </div>
 </body>
 </html>

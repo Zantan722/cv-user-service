@@ -52,8 +52,8 @@ http://localhost:8080/swagger-ui/index.html
 
 https://cv-front-end-683332902245.asia-east1.run.app/swagger-ui/index.html
 
-# 補充內容
-## 設計理念與使用
+## 補充內容
+### 設計理念與使用
 1. 主要使用Spring Boot 進行開發，並使用 Spring Security 進行權限控管
 2. 使用 JWT 進行登入驗證
 3. 使用 MySQL 進行資料庫存取
@@ -79,7 +79,14 @@ https://cv-front-end-683332902245.asia-east1.run.app/swagger-ui/index.html
 14. BLOG的查詢有增加order by與sort功能
 
 
-## 覺得可以在優化的地方
+### 覺得可以在優化的地方
 1. 因為JWT的特性，會有token過期的問題，可以再增加refresh token的功能，讓使用者可以在token過期後，重新取得新的token
 2. Blog資料表裡面的tags欄位，使用了`json`來存放tags的資料，若之後有需要依照tags進行找碴資料，可以考慮使用多對多的關聯來存放tags的資料
 3. Exception處理可以再增加更多的錯誤處理，不是只有用-1,0來表示，可以整合更多的錯誤碼，讓前端可以更清楚的知道錯誤的原因
+
+
+### 加分項目
+實作 JWT 驗證機制
+整合 Spring Security
+自動化測試覆蓋率報表
+資料庫 schema migration（Flyway / Liquibase）
