@@ -86,7 +86,9 @@ https://cv-front-end-683332902245.asia-east1.run.app/swagger-ui/index.html
 
 
 ### 加分項目
-實作 JWT 驗證機制
-整合 Spring Security
-自動化測試覆蓋率報表
-資料庫 schema migration（Flyway / Liquibase）
+1. 實作 JWT 驗證機制
+2. 整合 Spring Security 
+3. 自動化測試覆蓋率報表
+    - 測試覆蓋率報表在/htmlReport/index.html，該報表為使用頁面上點擊個功能產生的，並非寫JUnit產生
+    - 有使用mock進行實作Junit的code
+4. 資料庫 schema migration（Liquibase）

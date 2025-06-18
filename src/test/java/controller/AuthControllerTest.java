@@ -9,7 +9,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.transaction.annotation.Transactional;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -36,7 +35,7 @@ public class AuthControllerTest {
     }
 
     @Test
-    public void testLoginFailEmailFail() throws Exception  {
+    public void testLoginFailEmailFail() throws Exception {
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setEmail("admin");
         loginRequest.setPassword("Aaa123123123");
@@ -47,7 +46,7 @@ public class AuthControllerTest {
     }
 
     @Test
-    public void testLoginFailPasswordFail()  throws Exception {
+    public void testLoginFailPasswordFail() throws Exception {
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setEmail("admin@gmail.com");
         loginRequest.setPassword("Aaa");
@@ -63,7 +62,6 @@ public class AuthControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.statusCode").value("-1"));
     }
-
 
 
 }
